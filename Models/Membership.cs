@@ -6,7 +6,9 @@ namespace GitHubPractice.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        [Display(Name="Date Joined")]
         public DateTime JoinDate { get; set; } = DateTime.Now;
+        [Display(Name="Currently Active")]
         public bool IsActive { get; set; } = true;
 
         [DataType(DataType.Date)]
