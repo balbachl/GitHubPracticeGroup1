@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GitHubPractice.Models;
 
-namespace GitHubPractice.Pages.Memberships
+namespace GitHubPractice.Pages.MembershipPages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly MembershipContext _context;
+
+    public IndexModel(MembershipContext context)
     {
-        private readonly GitHubPractice.Models.MembershipContext _context;
+        _context = context;
+    }
 
-        public IndexModel(GitHubPractice.Models.MembershipContext context)
-        {
-            _context = context;
-        }
+    public IList<Membership> Membership { get; set; } = default!;
 
-        public IList<Membership> Membership { get;set; } = default!;
-
-        public async Task OnGetAsync()
-        {
-            Membership = await _context.Memberships.ToListAsync();
-        }
+    public async Task OnGetAsync()
+    {
+        Membership = await _context.Memberships.ToListAsync();
     }
 }
