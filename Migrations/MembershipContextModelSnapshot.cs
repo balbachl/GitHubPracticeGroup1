@@ -30,6 +30,10 @@ namespace GitHubPractice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -48,6 +52,7 @@ namespace GitHubPractice.Migrations
                         new
                         {
                             Id = 1,
+                            Email = "frank@example.com",
                             IsActive = true,
                             JoinDate = new DateTime(2025, 6, 28, 20, 51, 0, 0, DateTimeKind.Unspecified),
                             Name = "Frank Furter"
@@ -55,6 +60,7 @@ namespace GitHubPractice.Migrations
                         new
                         {
                             Id = 2,
+                            Email = "cookie@example.com",
                             IsActive = true,
                             JoinDate = new DateTime(2025, 1, 28, 20, 51, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cookie Crumb"
@@ -62,6 +68,7 @@ namespace GitHubPractice.Migrations
                         new
                         {
                             Id = 3,
+                            Email = "sierra@example.com",
                             IsActive = true,
                             JoinDate = new DateTime(2025, 1, 1, 20, 51, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sierra Madre"
@@ -69,6 +76,7 @@ namespace GitHubPractice.Migrations
                         new
                         {
                             Id = 4,
+                            Email = "ima@example.com",
                             IsActive = true,
                             JoinDate = new DateTime(2025, 2, 14, 20, 51, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ima Winner"
@@ -76,6 +84,7 @@ namespace GitHubPractice.Migrations
                         new
                         {
                             Id = 5,
+                            Email = "truly@example.com",
                             IsActive = true,
                             JoinDate = new DateTime(2025, 3, 7, 20, 51, 0, 0, DateTimeKind.Unspecified),
                             Name = "Truly Sporty"
