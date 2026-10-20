@@ -1,0 +1,20 @@
+﻿body {
+    font-family: Cambria, Georgia, serif;
+    background: #edf3f9;
+    color: #243447;
+}
+
+header {
+    background: linear-gradient(120deg, #1d3557, #457b9d);
+    color: #f2d675;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    background: #1d3557;
+    color: #f2d675;
+    padding: 24px;
+    font-size: 0.9rem;
+}
