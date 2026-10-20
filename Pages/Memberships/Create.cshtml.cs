@@ -1,43 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using GitHubPractice.Models;
 
-namespace GitHubPractice.Pages.Memberships
+namespace GitHubPractice.Pages.MembershipPages;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly MembershipContext _context;
+
+    public CreateModel(MembershipContext context)
     {
-        private readonly GitHubPractice.Models.MembershipContext _context;
+        _context = context;
+    }
 
-        public CreateModel(GitHubPractice.Models.MembershipContext context)
-        {
-            _context = context;
-        }
+    public IActionResult OnGet()
+    {
+        return Page();
+    }
 
-        public IActionResult OnGet()
+    [BindProperty]
+    public Membership Membership { get; set; } = default!;
+
+    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD.
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        [BindProperty]
-        public Membership Membership { get; set; } = default!;
+        _context.Memberships.Add(Membership);
+        await _context.SaveChangesAsync();
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Memberships.Add(Membership);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
+        return RedirectToPage("./Index");
     }
 }
